@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="theme-color" content="#06111e"/>
+  <title>Drinks — IVOTEL Luxury Hotel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <button class="cart-fab" id="cartFab" onclick="openCart()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Order
+    <span class="cart-fab-count" id="cartCount">0</span>
+  </button>
+
+  <div class="inner-header">
+    <div class="deco-row">
+      <div class="deco-line"></div>
+      <span class="deco-label">Bar &amp; Cellar</span>
+      <div class="deco-line"></div>
+    </div>
+    <h1 class="gold-text">Drinks Menu</h1>
+    <div class="gold-rule"></div>
+    <p class="inner-sub">Alcohol served to guests 18+ only &mdash; drink responsibly</p>
+  </div>
+
+  <div class="cat-scroller-wrap">
+    <div class="cat-scroller">
+      <button class="cat-chip active" data-cat="all">All</button>
+      <button class="cat-chip" data-cat="whiskey">Whiskey</button>
+      <button class="cat-chip" data-cat="cognac">Cognac</button>
+      <button class="cat-chip" data-cat="wine">Wines</button>
+      <button class="cat-chip" data-cat="champagne">Champagne</button>
+      <button class="cat-chip" data-cat="cocktails">Cocktails</button>
+      <button class="cat-chip" data-cat="beer">Beers</button>
+      <button class="cat-chip" data-cat="soft">Soft Drinks</button>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-bar">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search drinks…"/>
+      <button class="s-clear" id="sClear" style="display:none">✕</button>
+    </div>
+  </div>
+
+  <div class="card-grid" id="cardGrid"></div>
+  <div class="no-results" id="noResults" style="display:none">
+    <span>🍷</span><p>No drinks found</p>
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="nav-link" href="index.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a class="nav-link" href="food.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+      Food
+    </a>
+    <a class="nav-link active" href="drinks.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 22h8M12 11v11M3 3l4 8h10l4-8H3z"/></svg>
+      Drinks
+    </a>
+    <a class="nav-link" href="rooms.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-5 9 5v14"/><path d="M9 22V12h6v10"/></svg>
+      Rooms
+    </a>
+    <a class="nav-link" href="contact.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.07 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Contact
+    </a>
+  </nav>
+
+  <div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="drawer" id="cartDrawer">
+    <div class="drawer-handle"></div>
+    <div class="drawer-head">
+      <h3 class="gold-static">Your Order</h3>
+      <button class="drawer-x" onclick="closeCart()">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody">
+      <div class="cart-empty-state" id="cartEmpty">
+        <div class="ei">🛒</div>
+        <p>Your order is empty</p>
+        <small>Tap + on any item to add it</small>
+      </div>
+      <ul class="cart-items" id="cartItems"></ul>
+    </div>
+    <div class="drawer-foot" id="drawerFoot" style="display:none">
+      <div class="sum-row"><span>Subtotal</span><span id="sumSub"></span></div>
+      <div class="sum-row"><span>Service (10%)</span><span id="sumSvc"></span></div>
+      <div class="sum-row sum-total"><span>Total</span><span id="sumTotal"></span></div>
+      <div class="room-wrap">
+        <label>ROOM / TABLE NUMBER</label>
+        <input type="text" id="roomNo" placeholder="e.g. 204 or Table 7"/>
+      </div>
+      <button class="btn-gold" onclick="placeOrder()">Place Order</button>
+    </div>
+  </div>
+  <div class="overlay" id="confirmOverlay"></div>
+  <div class="modal" id="confirmModal">
+    <div class="confirm-icon">✓</div>
+    <h3 class="gold-static">Order Placed!</h3>
+    <p id="confirmMsg">Your order has been received.</p>
+    <button class="btn-gold" onclick="closeConfirm()">Done</button>
+  </div>
+
+  <script src="js/cart.js"></script>
+  <script>
+    const DRINKS = [
+      // Whiskey
+      { name:'Glenfiddich 18yrs',      cat:'whiskey',   emoji:'🥃', grad:'g2', price:250000 },
+      { name:'Glenmorangie 10yrs',     cat:'whiskey',   emoji:'🥃', grad:'g2', price:110000 },
+      { name:'Macallan 12yr',          cat:'whiskey',   emoji:'🥃', grad:'g2', price:135000 },
+      { name:'Jameson',                cat:'whiskey',   emoji:'🥃', grad:'g2', price:45000  },
+      // Cognac
+      { name:'Hennessy XO',            cat:'cognac',    emoji:'🍾', grad:'g4', price:180000 },
+      { name:'Hennessy VSOP',          cat:'cognac',    emoji:'🍾', grad:'g4', price:220000 },
+      { name:'Rémy Martin VSOP',       cat:'cognac',    emoji:'🍾', grad:'g4', price:95000  },
+      // Wine
+      { name:'Red Wine (glass)',        cat:'wine',      emoji:'🍷', grad:'g4', price:15000  },
+      { name:'White Wine (glass)',      cat:'wine',      emoji:'🥂', grad:'g1', price:15000  },
+      { name:'Rosé (bottle)',           cat:'wine',      emoji:'🍷', grad:'g4', price:65000  },
+      // Champagne
+      { name:'Moët & Chandon',         cat:'champagne', emoji:'🥂', grad:'g1', price:120000 },
+      { name:'Veuve Clicquot',         cat:'champagne', emoji:'🥂', grad:'g7', price:150000 },
+      // Cocktails
+      { name:'Signature Cocktails',    cat:'cocktails', emoji:'🍹', grad:'g5', price:6000   },
+      { name:'Zombie',                 cat:'cocktails', emoji:'🍹', grad:'g4', price:6000   },
+      { name:'Mojito',                 cat:'cocktails', emoji:'🍸', grad:'g5', price:5500   },
+      // Beer
+      { name:'Heineken',               cat:'beer',      emoji:'🍺', grad:'g5', price:2500   },
+      { name:'Guinness',               cat:'beer',      emoji:'🍺', grad:'g7', price:2000   },
+      { name:'Trophy Lager',           cat:'beer',      emoji:'🍺', grad:'g5', price:1500   },
+      // Soft
+      { name:'Fresh Juice',            cat:'soft',      emoji:'🧃', grad:'g5', price:2000   },
+      { name:'Soft Drinks',            cat:'soft',      emoji:'🥤', grad:'g1', price:1000   },
+      { name:'Smoothies',              cat:'soft',      emoji:'🍓', grad:'g4', price:3500   },
+      { name:'Milkshake',              cat:'soft',      emoji:'🥛', grad:'g1', price:3000   },
+    ];
+
+    renderPageItems(DRINKS);
+    setupSearch(DRINKS, items => renderPageItems(items));
+    setupCatChips(DRINKS,  items => renderPageItems(items));
+  </script>
+</body>
+</html>
