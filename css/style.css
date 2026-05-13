@@ -165,10 +165,10 @@ ul     { list-style:none; }
   z-index: 1;
   background:
     linear-gradient(to bottom,
-      rgba(6,17,30,0.55)   0%,
-      rgba(6,17,30,0.30)  40%,
-      rgba(6,17,30,0.55)  75%,
-      rgba(6,17,30,0.90) 100%
+      rgba(6,17,30,0.30)   0%,
+      rgba(6,17,30,0.15)  40%,
+      rgba(6,17,30,0.40)  75%,
+      rgba(6,17,30,0.85) 100%
     );
 }
 
@@ -198,47 +198,46 @@ ul     { list-style:none; }
   align-items: center;
   gap: 0;
   margin-bottom: 0;
-  animation: logoFloat 6s ease-in-out 1.2s infinite;
+  animation: logoFloat 7s ease-in-out 1s infinite;
 }
 
-/* Outer ambient glow ring */
+/* Soft organic dark vignette behind logo — no hard edges */
 .hero-logo::before {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
-  transform: translate(-50%, -55%);
-  width: 260px; height: 260px;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: 200px;
   background: radial-gradient(ellipse,
-    rgba(201,164,58,0.18) 0%,
-    rgba(201,164,58,0.07) 40%,
-    transparent 70%
+    rgba(3, 8, 18, 0.75) 0%,
+    rgba(3, 8, 18, 0.45) 40%,
+    transparent 72%
   );
-  border-radius: 50%;
-  animation: glowPulse 4s ease-in-out infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
-/* Tight inner glow ring */
+/* Faint gold shimmer on top of vignette */
 .hero-logo::after {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
-  transform: translate(-50%, -55%);
-  width: 140px; height: 140px;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 160px;
   background: radial-gradient(ellipse,
-    rgba(201,164,58,0.22) 0%,
+    rgba(201,164,58,0.07) 0%,
     transparent 65%
   );
-  border-radius: 50%;
-  animation: glowPulse 4s ease-in-out 0.5s infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  animation: glowPulse 5s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -55%) scale(1); }
-  50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.12); }
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
 }
 
 @keyframes logoFloat {
@@ -248,18 +247,12 @@ ul     { list-style:none; }
 
 .hero-logo > img {
   height: 130px;
+  max-width: 300px;
   width: auto;
   object-fit: contain;
-  filter:
-    drop-shadow(0 0 28px rgba(201,164,58,0.55))
-    drop-shadow(0 0 60px rgba(201,164,58,0.20))
-    drop-shadow(0 8px 16px rgba(0,0,0,0.6));
-  animation: logoGlow 4s ease-in-out infinite;
-}
-
-@keyframes logoGlow {
-  0%, 100% { filter: drop-shadow(0 0 22px rgba(201,164,58,0.45)) drop-shadow(0 8px 16px rgba(0,0,0,0.6)); }
-  50%       { filter: drop-shadow(0 0 40px rgba(201,164,58,0.75)) drop-shadow(0 0 70px rgba(201,164,58,0.25)) drop-shadow(0 8px 16px rgba(0,0,0,0.6)); }
+  position: relative;
+  z-index: 1;
+  filter: brightness(1.1) contrast(1.05) drop-shadow(0 2px 16px rgba(0,0,0,0.7));
 }
 
 .logo-fallback {
@@ -269,21 +262,12 @@ ul     { list-style:none; }
   gap: 8px;
 }
 .lf-mark {
-  width: 90px; height: 90px;
+  width: 80px; height: 80px;
   border-radius: 50%;
-  border: 1.5px solid rgba(201,164,58,0.35);
+  border: 1.5px solid rgba(201,164,58,0.30);
   background: linear-gradient(135deg, var(--bg3), var(--card2));
   display: flex; align-items: center; justify-content: center;
-  box-shadow:
-    0 0 0 8px rgba(201,164,58,0.04),
-    0 0 32px rgba(201,164,58,0.20),
-    inset 0 0 16px rgba(201,164,58,0.06);
-  animation: ringPulse 4s ease-in-out infinite;
-}
-
-@keyframes ringPulse {
-  0%, 100% { box-shadow: 0 0 0 8px rgba(201,164,58,0.04), 0 0 32px rgba(201,164,58,0.20), inset 0 0 16px rgba(201,164,58,0.06); }
-  50%       { box-shadow: 0 0 0 14px rgba(201,164,58,0.08), 0 0 55px rgba(201,164,58,0.35), inset 0 0 20px rgba(201,164,58,0.10); }
+  box-shadow: 0 0 20px rgba(201,164,58,0.12), inset 0 0 10px rgba(201,164,58,0.05);
 }
 
 .lf-mark svg {
@@ -315,7 +299,11 @@ ul     { list-style:none; }
   margin-top: 2px;
 }
 
-.hero-rule { margin: 20px auto 0; }
+.hero-rule {
+  margin: 24px auto 0;
+  width: 60px;
+  opacity: 0.7;
+}
 
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif;
@@ -323,7 +311,7 @@ ul     { list-style:none; }
   font-style: italic;
   letter-spacing: 2px;
   color: rgba(201,164,58,0.80);
-  margin-top: 14px;
+  margin-top: 16px;
   text-align: center;
 }
 
