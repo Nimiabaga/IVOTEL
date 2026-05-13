@@ -135,13 +135,12 @@ ul     { list-style:none; }
    ───────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-bottom: 72px; /* room for scroll cue */
+  padding: 60px 0 48px;
 }
 
 /* Background image layer */
@@ -193,20 +192,76 @@ ul     { list-style:none; }
 
 /* Logo inside hero */
 .hero-logo {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
   margin-bottom: 0;
+  animation: logoFloat 6s ease-in-out 1.2s infinite;
 }
+
+/* Outer ambient glow ring */
+.hero-logo::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  width: 260px; height: 260px;
+  background: radial-gradient(ellipse,
+    rgba(201,164,58,0.18) 0%,
+    rgba(201,164,58,0.07) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: glowPulse 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Tight inner glow ring */
+.hero-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  width: 140px; height: 140px;
+  background: radial-gradient(ellipse,
+    rgba(201,164,58,0.22) 0%,
+    transparent 65%
+  );
+  border-radius: 50%;
+  animation: glowPulse 4s ease-in-out 0.5s infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -55%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.12); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
 .hero-logo > img {
   height: 130px;
   width: auto;
   object-fit: contain;
   filter:
-    drop-shadow(0 0 24px rgba(201,164,58,0.40))
-    drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+    drop-shadow(0 0 28px rgba(201,164,58,0.55))
+    drop-shadow(0 0 60px rgba(201,164,58,0.20))
+    drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+  animation: logoGlow 4s ease-in-out infinite;
 }
+
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 22px rgba(201,164,58,0.45)) drop-shadow(0 8px 16px rgba(0,0,0,0.6)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(201,164,58,0.75)) drop-shadow(0 0 70px rgba(201,164,58,0.25)) drop-shadow(0 8px 16px rgba(0,0,0,0.6)); }
+}
+
 .logo-fallback {
   display: none;
   flex-direction: column;
@@ -214,19 +269,36 @@ ul     { list-style:none; }
   gap: 8px;
 }
 .lf-mark {
-  width: 80px; height: 80px;
+  width: 90px; height: 90px;
   border-radius: 50%;
-  border: 2px solid var(--gold-border);
+  border: 1.5px solid rgba(201,164,58,0.35);
   background: linear-gradient(135deg, var(--bg3), var(--card2));
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 28px var(--gold-glow), inset 0 0 12px rgba(201,164,58,0.06);
+  box-shadow:
+    0 0 0 8px rgba(201,164,58,0.04),
+    0 0 32px rgba(201,164,58,0.20),
+    inset 0 0 16px rgba(201,164,58,0.06);
+  animation: ringPulse 4s ease-in-out infinite;
 }
+
+@keyframes ringPulse {
+  0%, 100% { box-shadow: 0 0 0 8px rgba(201,164,58,0.04), 0 0 32px rgba(201,164,58,0.20), inset 0 0 16px rgba(201,164,58,0.06); }
+  50%       { box-shadow: 0 0 0 14px rgba(201,164,58,0.08), 0 0 55px rgba(201,164,58,0.35), inset 0 0 20px rgba(201,164,58,0.10); }
+}
+
 .lf-mark svg {
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   fill: none;
   stroke: var(--gold);
   stroke-width: 1.2;
+  animation: mandalaSpin 24s linear infinite;
 }
+
+@keyframes mandalaSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 .lf-name {
   font-family: 'Cinzel', serif;
   font-size: 34px;
@@ -281,9 +353,13 @@ ul     { list-style:none; }
    FEATURED SECTION
    ───────────────────────────────────────────────────── */
 .featured-section {
-  padding: 36px 20px 10px;
+  padding: 20px 20px 10px;
   max-width: 480px;
   margin: 0 auto;
+}
+
+.explore-label {
+  margin-bottom: 20px;
 }
 
 .feat-heading {
