@@ -1426,6 +1426,23 @@ ul     { list-style:none; }
   text-transform: uppercase;
 }
 
+.cat-sub-head {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 22px 0 10px;
+  border-bottom: 1px solid rgba(212,164,55,0.20);
+  margin-bottom: 2px;
+  background: linear-gradient(105deg, var(--gold-dk) 0%, var(--gold) 30%, var(--gold-lt) 50%, var(--gold) 70%, var(--gold-dk) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
+}
+
 .cat-back {
   display: inline-flex;
   align-items: center;
