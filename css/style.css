@@ -254,14 +254,15 @@ ul     { list-style:none; }
 }
 
 .hero-logo > img {
-  height: 130px;
-  max-width: 300px;
+  height: 145px;
+  max-width: 320px;
   width: auto;
   object-fit: contain;
   position: relative;
   z-index: 1;
-  mix-blend-mode: screen;
-  filter: brightness(1.3) contrast(1.1) saturate(1.2);
+  border-radius: 12px;
+  display: block;
+  filter: brightness(1.08) contrast(1.05);
 }
 
 .logo-fallback {
@@ -345,6 +346,333 @@ ul     { list-style:none; }
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(5px); }
 }
+
+/* ─────────────────────────────────────────────────────
+   FOOD MENU PAGE
+   ───────────────────────────────────────────────────── */
+
+/* Hero header */
+.fmenu-hero {
+  padding: 40px 20px 0;
+  text-align: center;
+}
+.fmenu-hero .fh-logo {
+  height: 110px;
+  max-width: 290px;
+  object-fit: contain;
+  border-radius: 10px;
+  filter: brightness(1.08) contrast(1.05);
+  display: inline-block;
+}
+.fmenu-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 2px;
+  color: rgba(212,164,55,0.70);
+  margin-top: 10px;
+}
+
+/* Title */
+.fmenu-title {
+  text-align: center;
+  padding: 18px 20px 10px;
+}
+.fmenu-title h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+}
+.fmenu-underline {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ── CATEGORY TAB STRIP ─────────────────────────────── */
+.cat-tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(212,164,55,0.12);
+}
+.cat-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 12px;
+  gap: 0;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+.cat-tab {
+  flex-shrink: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding: 13px 14px 11px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.cat-tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.cat-tab:active { opacity: 0.7; }
+
+/* ── MENU SECTIONS ──────────────────────────────────── */
+.menu-section {
+  padding: 0 20px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.menu-sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 24px 0 12px;
+  border-bottom: 1px solid rgba(212,164,55,0.14);
+  margin-bottom: 2px;
+}
+.menu-sec-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: rgba(212,164,55,0.35);
+  flex-shrink: 0;
+}
+.menu-sec-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex: 1;
+}
+.menu-sec-count {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  color: rgba(212,164,55,0.35);
+  flex-shrink: 0;
+}
+
+/* Tray note */
+.tray-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  color: var(--dim);
+  text-align: center;
+  padding: 10px 24px 28px;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────────────
+   INNER PAGE — LOGO HEADER
+   ───────────────────────────────────────────────────── */
+.food-header {
+  padding: 44px 20px 20px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.fh-logo-wrap {
+  display: inline-block;
+  margin-bottom: 2px;
+}
+.fh-logo {
+  height: 115px;
+  max-width: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+  filter: brightness(1.08) contrast(1.05);
+}
+.fh-logo-wrap {
+  position: relative;
+}
+.fh-logo-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px; height: 140px;
+  background: radial-gradient(ellipse,
+    rgba(212,164,55,0.10) 0%,
+    rgba(212,164,55,0.04) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.fh-fallback { text-align: center; }
+.fh-title {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────
+   CATEGORY TABS (food page)
+   ───────────────────────────────────────────────────── */
+.mtabs-wrap {
+  overflow: hidden;
+  border-bottom: 1px solid rgba(212,164,55,0.12);
+  margin-bottom: 4px;
+}
+.mtabs {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 16px;
+  scrollbar-width: none;
+  gap: 0;
+}
+.mtabs::-webkit-scrollbar { display: none; }
+.mtab {
+  flex-shrink: 0;
+  padding: 13px 18px;
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.mtab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transition: transform 0.25s var(--ease);
+  border-radius: 2px;
+}
+.mtab.active { color: var(--gold); }
+.mtab.active::after { transform: translateX(-50%) scaleX(1); }
+.mtab:hover { color: rgba(212,164,55,0.65); }
+
+/* ─────────────────────────────────────────────────────
+   MENU LIST LAYOUT
+   ───────────────────────────────────────────────────── */
+.msec {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.mcat-label {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  padding: 28px 0 4px;
+}
+.msub { margin-bottom: 4px; }
+.msub-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0 10px;
+}
+.msub-head::before,
+.msub-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+}
+.msub-head::before {
+  background: linear-gradient(90deg, transparent, rgba(212,164,55,0.25));
+}
+.msub-head::after {
+  background: linear-gradient(90deg, rgba(212,164,55,0.25), transparent);
+}
+.msub-head span {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(212,164,55,0.65);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Item row */
+.mrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.035);
+  gap: 12px;
+}
+.mrow:last-child { border-bottom: none; }
+.mrow-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  flex: 1;
+  line-height: 1.3;
+}
+.mrow-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.mrow-price {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.mrow-add {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(212,164,55,0.08);
+  border: 1px solid rgba(212,164,55,0.28);
+  color: var(--gold);
+  font-size: 19px;
+  font-weight: 300;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.mrow-add:hover  { background: rgba(212,164,55,0.20); }
+.mrow-add.added  { background: var(--gold); color: var(--bg); font-size: 13px; }
 
 /* ─────────────────────────────────────────────────────
    FEATURED SECTION
@@ -978,6 +1306,81 @@ ul     { list-style:none; }
 }
 .cl-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:1.5px; color:var(--dim); margin-bottom:2px; }
 .cl-value { font-size: 13px; font-weight: 500; }
+
+/* ─────────────────────────────────────────────────────
+   CATEGORY PILL GRID (food page — Gabby style)
+   ───────────────────────────────────────────────────── */
+.menu-cat-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 36px;
+  gap: 10px 12px;
+  margin: 1.2rem auto 1rem;
+  max-width: 480px;
+  padding: 0.25rem 20px 0.6rem;
+}
+
+@media (min-width: 380px) {
+  .menu-cat-pills { grid-template-columns: repeat(3, 1fr); }
+}
+
+.menu-cat-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  border-radius: 999px;
+  padding: 4px 8px;
+  background:
+    linear-gradient(180deg, #F2C158 0%, #8A6B1A 55%, #C9A43A 100%) padding-box,
+    linear-gradient(180deg, rgba(0,0,0,0.65), rgba(212,164,55,0.45) 55%, rgba(138,107,26,0.45)) border-box;
+  border: 1px solid transparent;
+  color: #06111e;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 12px 26px rgba(0,0,0,.62),
+    0 0 18px rgba(212,164,55,.16);
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  cursor: pointer;
+}
+
+.menu-cat-pill:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    0 18px 34px rgba(0,0,0,.64),
+    0 0 22px rgba(212,164,55,.22);
+}
+
+.menu-cat-pill--bites { grid-column: 1 / -1; height: auto; min-height: 36px; padding: 6px 8px; }
+
+.pill-sub {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  opacity: 0.80;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+.menu-cat-pill:active {
+  transform: scale(.982);
+  box-shadow:
+    inset 0 -2px 0 rgba(212,164,55,.45),
+    0 10px 20px rgba(0,0,0,.50);
+}
 
 /* ── SCROLLBAR ───────────────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; }

@@ -4,61 +4,164 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <meta name="theme-color" content="#06111e"/>
-  <title>Food — IVOTEL Luxury Hotel</title>
+  <title>Food Menu — IVOTEL Luxury Hotel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-  <!-- Cart FAB -->
-  <button class="cart-fab" id="cartFab" onclick="openCart()">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-    Order
-    <span class="cart-fab-count" id="cartCount">0</span>
-  </button>
-
-  <!-- Header -->
-  <div class="inner-header">
-    <div class="deco-row">
-      <div class="deco-line"></div>
-      <span class="deco-label">Culinary</span>
-      <div class="deco-line"></div>
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/featured/hero.jpg" alt="" onerror="this.style.display='none'"/>
     </div>
-    <h1 class="gold-text">Food Menu</h1>
-    <div class="gold-rule"></div>
-    <p class="inner-sub">Served with elegance</p>
-  </div>
+    <div class="hero-overlay"></div>
 
-  <!-- Category chips -->
-  <div class="cat-scroller-wrap">
-    <div class="cat-scroller">
-      <button class="cat-chip active" data-cat="all">All</button>
-      <button class="cat-chip" data-cat="starters">Starters</button>
-      <button class="cat-chip" data-cat="breakfast">Breakfast</button>
-      <button class="cat-chip" data-cat="fingerfood">Finger Foods</button>
-      <button class="cat-chip" data-cat="mains">Mains</button>
-      <button class="cat-chip" data-cat="seafood">Seafood</button>
-      <button class="cat-chip" data-cat="pasta">Pasta &amp; Salads</button>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img
+          src="assets/logo.png"
+          alt="IVOTEL Luxury Hotel"
+          onerror="this.style.display='none'; document.getElementById('lf').style.display='flex'"
+        />
+        <div class="logo-fallback" id="lf">
+          <div class="lf-mark">
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="12" stroke-width="1.5"/>
+              <ellipse cx="30" cy="14" rx="5" ry="9" stroke-width="1.2"/>
+              <ellipse cx="30" cy="46" rx="5" ry="9" stroke-width="1.2"/>
+              <ellipse cx="14" cy="30" rx="9" ry="5" stroke-width="1.2"/>
+              <ellipse cx="46" cy="30" rx="9" ry="5" stroke-width="1.2"/>
+              <ellipse cx="18" cy="18" rx="5" ry="9" transform="rotate(45 18 18)" stroke-width="1.2"/>
+              <ellipse cx="42" cy="42" rx="5" ry="9" transform="rotate(45 42 42)" stroke-width="1.2"/>
+              <ellipse cx="42" cy="18" rx="5" ry="9" transform="rotate(-45 42 18)" stroke-width="1.2"/>
+              <ellipse cx="18" cy="42" rx="5" ry="9" transform="rotate(-45 18 42)" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="lf-name gold-text">IVOTEL</div>
+          <div class="lf-sub">LUXURY HOTEL</div>
+        </div>
+      </div>
+
+      <div class="gold-rule hero-rule"></div>
+      <p class="hero-tagline">Comfort &bull; Elegance &bull; Excellence</p>
+    </div>
+  </section>
+
+  <!-- ── FOOD MENU TITLE ───────────────────────────────── -->
+  <div class="featured-section" style="padding-bottom:0">
+    <div class="explore-label">
+      <div class="deco-row">
+        <div class="deco-line"></div>
+        <span class="deco-label">Browse By Category</span>
+        <div class="deco-line"></div>
+      </div>
+    </div>
+
+    <div class="feat-heading">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+      <span>Food Menu</span>
     </div>
   </div>
 
-  <!-- Search -->
-  <div class="search-wrap">
-    <div class="search-bar">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchInput" placeholder="Search dishes…"/>
-      <button class="s-clear" id="sClear" style="display:none">✕</button>
+  <!-- ── CATEGORY PILL GRID ────────────────────────────── -->
+  <nav class="menu-cat-pills" aria-label="Food categories">
+    <a href="continental-breakfast.html" class="menu-cat-pill">Continental Breakfast</a>
+    <a href="national-breakfast.html"    class="menu-cat-pill">National Breakfast</a>
+    <a href="rice-pasta.html"            class="menu-cat-pill">Rice / Pasta</a>
+    <a href="africana.html"              class="menu-cat-pill">Africana Special</a>
+    <a href="swallows.html"              class="menu-cat-pill">Soups &amp; Swallows</a>
+    <a href="proteins.html"              class="menu-cat-pill">Proteins</a>
+    <a href="national.html"              class="menu-cat-pill">National Cuisine</a>
+    <a href="chinese.html"               class="menu-cat-pill">Chinese Special</a>
+    <a href="cold-starters.html"         class="menu-cat-pill">Cold Starters / Salad</a>
+    <a href="cont-appetizers.html"       class="menu-cat-pill">Continental Appetizers</a>
+    <a href="nat-appetizers.html"        class="menu-cat-pill">National Appetizers</a>
+    <a href="beans-extras.html"          class="menu-cat-pill">Beans / Extras</a>
+    <a href="dessert.html"               class="menu-cat-pill">Dessert / Vegetarian</a>
+    <a href="ivotel-special.html"         class="menu-cat-pill">Ivotel Special</a>
+    <a href="bites.html" class="menu-cat-pill menu-cat-pill--bites">
+      Bites
+      <span class="pill-sub">(steak · pizza · shawarma · sandwich)</span>
+    </a>
+  </nav>
+
+  <!-- ── FEATURED DISHES ───────────────────────────────── -->
+  <div class="featured-section">
+
+    <div class="explore-label">
+      <div class="deco-row">
+        <div class="deco-line"></div>
+        <span class="deco-label">Must Try</span>
+        <div class="deco-line"></div>
+      </div>
+    </div>
+
+    <div class="feat-heading">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>Featured Dishes</span>
+    </div>
+
+    <div class="feat-grid">
+
+      <!-- Card 1 — wide -->
+      <div class="feat-card feat-wide">
+        <div class="feat-photo g6">
+          <img src="assets/featured/catfish-bbq.jpg" alt="Catfish Barbeque" onerror="this.style.display='none'"/>
+          <div class="feat-tag">Chef's Special</div>
+        </div>
+        <div class="feat-info">
+          <div class="feat-name">Catfish Barbeque</div>
+          <div class="feat-price">₦17,000</div>
+        </div>
+      </div>
+
+      <!-- Card 2 — half -->
+      <div class="feat-card">
+        <div class="feat-photo g3">
+          <img src="assets/featured/seafood-okra.jpg" alt="Seafood Okra" onerror="this.style.display='none'"/>
+
+        </div>
+        <div class="feat-info">
+          <div class="feat-name">Seafood Okra</div>
+          <div class="feat-price">₦15,000</div>
+        </div>
+      </div>
+
+      <!-- Card 3 — half -->
+      <div class="feat-card">
+        <div class="feat-photo g4">
+          <img src="assets/featured/isi-ewu.jpg" alt="Isi Ewu" onerror="this.style.display='none'"/>
+
+        </div>
+        <div class="feat-info">
+          <div class="feat-name">Isi Ewu</div>
+          <div class="feat-price">₦15,000</div>
+        </div>
+      </div>
+
+      <!-- Card 4 — wide -->
+      <div class="feat-card feat-wide">
+        <div class="feat-photo g2">
+          <img src="assets/featured/breakfast.jpg" alt="English Breakfast" onerror="this.style.display='none'"/>
+
+        </div>
+        <div class="feat-info">
+          <div class="feat-name">English Breakfast</div>
+          <div class="feat-price">₦15,000</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- Card grid -->
-  <div class="card-grid" id="cardGrid"></div>
-  <div class="no-results" id="noResults" style="display:none">
-    <span>🍽️</span><p>No dishes found</p>
+  <!-- Ornament footer -->
+  <div style="padding:28px 0 8px;text-align:center">
+    <span class="deco-label" style="opacity:0.4">Scan &bull; Browse &bull; Enjoy</span>
   </div>
 
-  <!-- Bottom Nav -->
+  <!-- ── BOTTOM NAV ─────────────────────────────────────── -->
   <nav class="bottom-nav">
     <a class="nav-link" href="index.html">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -82,7 +185,7 @@
     </a>
   </nav>
 
-  <!-- Cart Drawer -->
+  <!-- ── CART DRAWER ────────────────────────────────────── -->
   <div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
   <div class="drawer" id="cartDrawer">
     <div class="drawer-handle"></div>
@@ -109,56 +212,15 @@
       <button class="btn-gold" onclick="placeOrder()">Place Order</button>
     </div>
   </div>
+
   <div class="overlay" id="confirmOverlay"></div>
   <div class="modal" id="confirmModal">
     <div class="confirm-icon">✓</div>
     <h3 class="gold-static">Order Placed!</h3>
-    <p id="confirmMsg">Your order has been received.</p>
+    <p id="confirmMsg">Your order has been received. We'll be with you shortly.</p>
     <button class="btn-gold" onclick="closeConfirm()">Done</button>
   </div>
 
   <script src="js/cart.js"></script>
-  <script>
-    /* ── FOOD ITEMS DATA ────────────────────────────────
-       Add img:'assets/items/filename.jpg' to each item
-       once you have the actual food photos.
-    ─────────────────────────────────────────────────── */
-    const FOOD = [
-      // Starters
-      { name:'Peppersoup',        cat:'starters',  emoji:'🍲', grad:'g6', price:3500  },
-      { name:'Suya Platter',      cat:'starters',  emoji:'🍢', grad:'g2', price:5500  },
-      { name:'Asun',              cat:'starters',  emoji:'🥩', grad:'g6', price:5000  },
-      { name:'Peppered Gizzard',  cat:'starters',  emoji:'🍖', grad:'g6', price:4000  },
-      // Breakfast
-      { name:'English Breakfast', cat:'breakfast', emoji:'🍳', grad:'g2', price:8000  },
-      { name:'Pancakes & Syrup',  cat:'breakfast', emoji:'🥞', grad:'g2', price:5000  },
-      { name:'Omelette & Toast',  cat:'breakfast', emoji:'🍞', grad:'g1', price:4500  },
-      { name:'Avocado Toast',     cat:'breakfast', emoji:'🥑', grad:'g5', price:5500  },
-      // Finger Foods
-      { name:'Spring Rolls (6)',  cat:'fingerfood',emoji:'🥟', grad:'g5', price:3000  },
-      { name:'Chicken Wings',     cat:'fingerfood',emoji:'🍗', grad:'g6', price:4500  },
-      { name:'Samosa Platter',    cat:'fingerfood',emoji:'🥟', grad:'g5', price:2500  },
-      { name:'BBQ Chicken Wings', cat:'fingerfood',emoji:'🍗', grad:'g2', price:4000  },
-      // Mains
-      { name:'Jollof Rice & Chicken',    cat:'mains', emoji:'🍛', grad:'g5', price:8500  },
-      { name:'Fried Rice & Beef',        cat:'mains', emoji:'🍚', grad:'g5', price:7500  },
-      { name:'Pepper Steak',             cat:'mains', emoji:'🥩', grad:'g6', price:15000 },
-      { name:'Pasta Carbonara',          cat:'mains', emoji:'🍝', grad:'g1', price:9000  },
-      { name:'Jamaican Beef Stir Fry',   cat:'mains', emoji:'🥘', grad:'g6', price:6000  },
-      { name:'China Pot with Rice',      cat:'mains', emoji:'🫕', grad:'g3', price:15000 },
-      // Seafood
-      { name:'Grilled Jumbo Prawn',      cat:'seafood',emoji:'🦐',grad:'g3', price:11000 },
-      { name:'Seafood in Cream Sauce',   cat:'seafood',emoji:'🦞',grad:'g3', price:13000 },
-      { name:'Grilled Tilapia',          cat:'seafood',emoji:'🐟',grad:'g3', price:9500  },
-      // Pasta & Salads
-      { name:'Chicken Salad',            cat:'pasta', emoji:'🥗', grad:'g5', price:9000  },
-      { name:'Caesar Salad',             cat:'pasta', emoji:'🥬', grad:'g5', price:7000  },
-      { name:'Club Sandwich',            cat:'pasta', emoji:'🥪', grad:'g1', price:5500  },
-    ];
-
-    renderPageItems(FOOD);
-    setupSearch(FOOD, items => renderPageItems(items));
-    setupCatChips(FOOD,  items => renderPageItems(items));
-  </script>
 </body>
 </html>
